@@ -1,4 +1,5 @@
 import { Award, BookOpen, Heart, Users } from "lucide-react";
+import bensonImage from "@/assets/benson-osika.jpg";
 
 const About = () => {
   const highlights = [
@@ -20,9 +21,26 @@ const About = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Highlights */}
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
+          {/* Photo and Highlights */}
           <div className="lg:col-span-1 order-2 lg:order-1">
+            {/* Photo */}
+            <div className="mb-8">
+              <div className="relative">
+                <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-xl border-4 border-accent/20">
+                  <img
+                    src={bensonImage}
+                    alt="Engr. Benson Osika, FNSE"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-accent rounded-lg flex items-center justify-center shadow-lg">
+                  <span className="text-accent-foreground font-serif font-bold text-lg">FNSE</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Highlights */}
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
               {highlights.map(({ icon: Icon, label }) => (
                 <div
@@ -39,7 +57,7 @@ const About = () => {
           </div>
 
           {/* Main Bio */}
-          <div className="lg:col-span-4 order-1 lg:order-2">
+          <div className="lg:col-span-2 order-1 lg:order-2">
             <div className="bg-card p-8 md:p-12 rounded-lg shadow-lg border border-border">
               <p className="text-foreground/90 text-lg leading-relaxed mb-6">
                 <span className="text-3xl font-serif text-accent float-left mr-3 mt-1">"</span>

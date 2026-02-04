@@ -6,14 +6,16 @@ import galleryImage3 from "@/assets/gallery-3.jpg";
 import galleryImage4 from "@/assets/gallery-4.jpg";
 import galleryImage5 from "@/assets/gallery-5.jpg";
 import galleryImage6 from "@/assets/gallery-6.jpg";
+import galleryImage7 from "@/assets/gallery-7.jpg";
 
 const galleryImages = [
-  { src: galleryImage1, alt: "Community outreach program", caption: "Community Outreach Program" },
-  { src: galleryImage2, alt: "Youth empowerment workshop", caption: "Youth Empowerment Workshop" },
-  { src: galleryImage3, alt: "Educational scholarship ceremony", caption: "Scholarship Award Ceremony" },
-  { src: galleryImage4, alt: "Healthcare initiative", caption: "Healthcare Initiative" },
-  { src: galleryImage5, alt: "Foundation event", caption: "Foundation Annual Event" },
-  { src: galleryImage6, alt: "Community development project", caption: "Community Development Project" },
+  { src: galleryImage1, alt: "Student with Nigerian flag at school event", caption: "School Outreach Program" },
+  { src: galleryImage2, alt: "Foundation representatives at school donation", caption: "School Donation Ceremony" },
+  { src: galleryImage3, alt: "School supplies and backpacks for students", caption: "Educational Supplies Distribution" },
+  { src: galleryImage4, alt: "Presenting supplies to student", caption: "Student Support Initiative" },
+  { src: galleryImage5, alt: "Handing backpack to student", caption: "Backpack Distribution" },
+  { src: galleryImage6, alt: "Group photo with students receiving supplies", caption: "Community Support Event" },
+  { src: galleryImage7, alt: "Group photo with students and backpacks", caption: "Foundation Outreach Program" },
 ];
 
 const Gallery = () => {

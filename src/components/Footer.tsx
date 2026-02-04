@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Heart } from "lucide-react";
+import { Mail, MapPin, Phone, Heart, Facebook, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -51,15 +51,49 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="mailto:info@bensonosikafoundation.org" className="text-primary-foreground/70 hover:text-accent transition-colors">
-                  info@bensonosikafoundation.org
+                <a href="mailto:bensonosikafoundation@gmail.com" className="text-primary-foreground/70 hover:text-accent transition-colors">
+                  bensonosikafoundation@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="text-primary-foreground/70">+234 XXX XXX XXXX</span>
+                <span className="text-primary-foreground/70">0803 709 7747</span>
               </li>
             </ul>
+
+            {/* Social Media */}
+            <div className="mt-6">
+              <h5 className="text-sm font-medium mb-3 text-primary-foreground/80">Follow Us</h5>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.facebook.com/share/14U6ZRy3A1B/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

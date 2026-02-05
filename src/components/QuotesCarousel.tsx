@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const quotes = [
@@ -18,15 +19,10 @@ const quotes = [
 
 const QuotesCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % quotes.length);
-        setIsAnimating(false);
-      }, 400);
+      setCurrentIndex((prev) => (prev + 1) % quotes.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -34,52 +30,94 @@ const QuotesCarousel = () => {
 
   return (
     <section className="py-20 bg-primary relative overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full translate-x-1/2 translate-y-1/2" />
+      {/* Animated Decorative Elements */}
+      <motion.div 
+        className="absolute top-0 left-0 w-64 h-64 bg-accent/5 rounded-full -translate-x-1/2 -translate-y-1/2"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.5, 0.8, 0.5] 
+        }}
+        transition={{ duration: 6, repeat: Infinity }}
+      />
+      <motion.div 
+        className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full translate-x-1/2 translate-y-1/2"
+        animate={{ 
+          scale: [1.2, 1, 1.2],
+          opacity: [0.3, 0.6, 0.3] 
+        }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+      <motion.div 
+        className="absolute top-1/2 left-1/4 w-32 h-32 bg-accent/3 rounded-full"
+        animate={{ 
+          y: [-20, 20, -20],
+          x: [-10, 10, -10],
+        }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <Quote className="w-16 h-16 text-accent mx-auto mb-8 opacity-50" />
+        <motion.div 
+          className="max-w-4xl mx-auto text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            animate={{ 
+              rotateY: [0, 10, 0, -10, 0],
+            }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <Quote className="w-16 h-16 text-accent mx-auto mb-8 opacity-50" />
+          </motion.div>
           
           <div className="min-h-[200px] flex flex-col items-center justify-center">
-            <blockquote
-              key={currentIndex}
-              className={`transition-all duration-400 ${
-                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-            >
-              <p className="text-2xl md:text-4xl font-serif text-primary-foreground leading-relaxed mb-8">
-                "{quotes[currentIndex].text}"
-              </p>
-              <footer className="text-accent font-medium tracking-wide">
-                — {quotes[currentIndex].author}
-              </footer>
-            </blockquote>
+            <AnimatePresence mode="wait">
+              <motion.blockquote
+                key={currentIndex}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -30, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                <p className="text-2xl md:text-4xl font-serif text-primary-foreground leading-relaxed mb-8">
+                  "{quotes[currentIndex].text}"
+                </p>
+                <motion.footer 
+                  className="text-accent font-medium tracking-wide"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  — {quotes[currentIndex].author}
+                </motion.footer>
+              </motion.blockquote>
+            </AnimatePresence>
           </div>
 
           {/* Dots Indicator */}
           <div className="flex justify-center gap-3 mt-10">
             {quotes.map((_, index) => (
-              <button
+              <motion.button
                 key={index}
-                onClick={() => {
-                  setIsAnimating(true);
-                  setTimeout(() => {
-                    setCurrentIndex(index);
-                    setIsAnimating(false);
-                  }, 400);
-                }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                onClick={() => setCurrentIndex(index)}
+                className={`h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? "bg-accent w-8"
+                    ? "bg-accent"
                     : "bg-primary-foreground/30 hover:bg-primary-foreground/50"
                 }`}
+                animate={{ 
+                  width: index === currentIndex ? 32 : 12,
+                }}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
                 aria-label={`Go to quote ${index + 1}`}
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,10 +3,9 @@ import bensonImage from "@/assets/benson-osika.jpg";
 
 const About = () => {
   const highlights = [
-    { icon: Award, label: "FNSE Fellow" },
-    { icon: BookOpen, label: "PhD Candidate" },
+    { icon: Award, label: "FNSE" },
+    { icon: BookOpen, label: "PhD (in view)" },
     { icon: Heart, label: "Philanthropist" },
-    { icon: Users, label: "Community Leader" },
   ];
 
   return (
@@ -26,17 +25,12 @@ const About = () => {
           <div className="lg:col-span-1 order-2 lg:order-1">
             {/* Photo */}
             <div className="mb-8">
-              <div className="relative">
-                <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-xl border-4 border-accent/20">
-                  <img
-                    src={bensonImage}
-                    alt="Engr. Benson Osika, FNSE"
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-20 h-20 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-accent-foreground font-serif font-bold text-lg">FNSE</span>
-                </div>
+              <div className="aspect-[3/4] rounded-lg overflow-hidden shadow-xl border-4 border-accent/20">
+                <img
+                  src={bensonImage}
+                  alt="Engr. Benson Osika, FNSE"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
 

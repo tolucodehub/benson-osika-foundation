@@ -4,6 +4,7 @@ import About from "@/components/About";
 import FoundationAbout from "@/components/FoundationAbout";
 import VideoIntroduction from "@/components/VideoIntroduction";
 import QuotesCarousel from "@/components/QuotesCarousel";
+import LatestNews from "@/components/LatestNews";
 import Gallery from "@/components/Gallery";
 import Footer from "@/components/Footer";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <VideoIntroduction />
       <About />
       <QuotesCarousel />
+      <LatestNews />
       <Gallery />
       <Footer />
     </div>

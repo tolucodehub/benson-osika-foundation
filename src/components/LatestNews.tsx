@@ -25,7 +25,7 @@ const LatestNews = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {newsItems.map((news, index) => (
             <motion.article
               key={news.id}
@@ -38,7 +38,7 @@ const LatestNews = () => {
             >
               <Link to={`/news/${news.id}`} className="block">
                 {/* Image Container */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 md:h-64 overflow-hidden">
                   <img
                     src={news.image}
                     alt={news.title}

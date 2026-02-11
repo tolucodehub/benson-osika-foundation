@@ -59,7 +59,7 @@ const NewsDetail = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="p-8 md:p-12">
+          <div className="p-5 md:p-8 lg:p-12">
             {/* Back Link */}
             <Link
               to="/#news"
@@ -81,7 +81,7 @@ const NewsDetail = () => {
 
             {/* Title */}
             <motion.h1
-              className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-8 leading-tight"
+              className="text-2xl md:text-3xl lg:text-5xl font-serif font-bold text-foreground mb-6 md:mb-8 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -99,7 +99,7 @@ const NewsDetail = () => {
               {news.content.split("\n\n").map((paragraph, index) => (
                 <motion.p
                   key={index}
-                  className="text-foreground/90 leading-relaxed mb-6 text-lg"
+                  className="text-foreground/90 leading-relaxed mb-4 md:mb-6 text-base md:text-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
@@ -111,7 +111,7 @@ const NewsDetail = () => {
 
             {/* Share Section */}
             <motion.div
-              className="mt-12 pt-8 border-t border-border flex items-center justify-between"
+              className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.8 }}
@@ -122,7 +122,7 @@ const NewsDetail = () => {
               </div>
               <Link
                 to="/#news"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-sm font-semibold hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full font-semibold hover:bg-accent/90 transition-colors"
               >
                 <ArrowLeft size={18} /> More News
               </Link>

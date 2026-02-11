@@ -9,7 +9,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contact" className="bg-primary text-primary-foreground overflow-hidden">
+    <footer id="contact" className="bg-primary text-primary-foreground overflow-hidden relative">
+      {/* Top decorative border */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           {/* About */}

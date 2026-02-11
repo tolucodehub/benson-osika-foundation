@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -14,13 +21,17 @@ const Header = () => {
 
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled 
+          ? "bg-primary/98 backdrop-blur-md shadow-lg shadow-primary/20" 
+          : "bg-primary/80 backdrop-blur-sm"
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
           {/* Logo */}
           <motion.a 
             href="#home" 
@@ -29,7 +40,7 @@ const Header = () => {
             transition={{ duration: 0.2 }}
           >
             <motion.div 
-              className="w-10 h-10 rounded-full bg-accent flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shadow-md"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
             >
@@ -55,7 +66,7 @@ const Header = () => {
                 whileHover={{ y: -2 }}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full rounded-full" />
               </motion.a>
             ))}
           </nav>

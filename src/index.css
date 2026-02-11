@@ -134,15 +134,15 @@
 
   .btn-foundation {
     @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wide uppercase transition-all duration-300;
-    @apply bg-accent text-accent-foreground rounded-sm;
+    @apply bg-accent text-accent-foreground rounded-full;
     @apply hover:shadow-lg hover:-translate-y-0.5;
     box-shadow: var(--shadow-gold);
   }
 
   .btn-outline-light {
     @apply inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wide uppercase transition-all duration-300;
-    @apply border-2 border-white/80 text-white rounded-sm;
-    @apply hover:bg-white hover:text-primary;
+    @apply border-2 border-white/60 text-white rounded-full;
+    @apply hover:bg-white hover:text-primary hover:border-white;
   }
 }
 

@@ -83,7 +83,7 @@ const VideoIntroduction = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="relative rounded-lg overflow-hidden shadow-2xl group">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
             {/* Video element */}
             <video
               ref={videoRef}

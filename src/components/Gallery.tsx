@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import galleryImage1 from "@/assets/gallery-1.jpg";
 import galleryImage2 from "@/assets/gallery-2.jpg";
 import galleryImage3 from "@/assets/gallery-3.jpg";
@@ -34,8 +34,12 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="section-padding bg-gradient-to-b from-muted to-background overflow-hidden">
-      <div className="container mx-auto">
+    <section id="gallery" className="section-padding bg-gradient-to-b from-muted/50 to-background overflow-hidden relative">
+      {/* Background decoration */}
+      <div className="absolute top-20 left-0 w-64 h-64 bg-accent/3 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-0 w-80 h-80 bg-primary/3 rounded-full blur-3xl" />
+
+      <div className="container mx-auto relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -43,12 +47,19 @@ const Gallery = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-2 bg-accent/10 text-accent text-sm font-medium tracking-widest uppercase rounded-sm mb-4">
+          <span className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/10">
             Our Impact
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">
             Event <span className="text-accent">Gallery</span>
           </h2>
+          <motion.div
+            className="w-16 h-1 bg-accent mx-auto rounded-full mb-4"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          />
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Capturing moments of positive change and community impact through the Foundation's initiatives.
           </p>
@@ -60,38 +71,33 @@ const Gallery = () => {
             <motion.div
               key={index}
               onClick={() => openLightbox(index)}
-              className="group relative overflow-hidden rounded-lg cursor-pointer aspect-[4/3]"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] shadow-md hover:shadow-xl transition-shadow duration-300"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8 }}
             >
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <motion.p 
-                    className="text-white font-medium text-lg"
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <p className="text-white font-medium text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     {image.caption}
-                  </motion.p>
+                  </p>
                 </div>
-              </motion.div>
-              {/* Shine effect on hover */}
+                <div className="absolute top-4 right-4">
+                  <div className="w-10 h-10 bg-accent/90 rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                    <ZoomIn className="w-5 h-5 text-accent-foreground" />
+                  </div>
+                </div>
+              </div>
+              {/* Shine effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </div>
             </motion.div>
           ))}
@@ -101,7 +107,7 @@ const Gallery = () => {
         <AnimatePresence>
           {selectedImage !== null && (
             <motion.div
-              className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+              className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
               onClick={closeLightbox}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -120,20 +126,20 @@ const Gallery = () => {
               
               <motion.button
                 onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                className="absolute left-4 text-white/80 hover:text-white p-2 transition-colors"
+                className="absolute left-4 text-white/80 hover:text-white p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
                 aria-label="Previous image"
-                whileHover={{ scale: 1.2, x: -5 }}
+                whileHover={{ scale: 1.1 }}
               >
-                <ChevronLeft size={40} />
+                <ChevronLeft size={28} />
               </motion.button>
               
               <motion.button
                 onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                className="absolute right-4 text-white/80 hover:text-white p-2 transition-colors"
+                className="absolute right-4 text-white/80 hover:text-white p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
                 aria-label="Next image"
-                whileHover={{ scale: 1.2, x: 5 }}
+                whileHover={{ scale: 1.1 }}
               >
-                <ChevronRight size={40} />
+                <ChevronRight size={28} />
               </motion.button>
 
               <motion.div 

@@ -33,7 +33,7 @@ const About = () => {
           <span className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/10">
             About The Founder
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
             Engr. Benson Osika, <span className="text-accent">FNSE</span>
           </h2>
           <motion.div
@@ -45,7 +45,7 @@ const About = () => {
           />
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12 items-start">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
           {/* Photo and Highlights */}
           <motion.div 
             className="lg:col-span-1 order-2 lg:order-1"
@@ -100,18 +100,18 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <div className="bg-card p-8 md:p-12 rounded-2xl shadow-xl border border-border/50 relative overflow-hidden">
+            <div className="bg-card p-5 md:p-8 lg:p-12 rounded-2xl shadow-xl border border-border/50 relative overflow-hidden">
               {/* Decorative corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/8 to-transparent rounded-bl-full" />
               
               <motion.p 
-                className="text-foreground/90 text-lg leading-relaxed mb-6 relative z-10"
+                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <span className="text-4xl font-serif text-accent float-left mr-3 mt-1 leading-none">"</span>
+                <span className="text-3xl md:text-4xl font-serif text-accent float-left mr-2 md:mr-3 mt-1 leading-none">"</span>
                 Engr. Benson Osika, FNSE is a highly respected energy professional, scholar, and 
                 humanitarian with over two decades of impact across Africa's oil and gas sector. 
                 He currently serves as Operations Manager – Completions System for Central and 
@@ -120,7 +120,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-lg leading-relaxed mb-6"
+                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -133,7 +133,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-lg leading-relaxed mb-6"
+                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -146,7 +146,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-lg leading-relaxed"
+                className="text-foreground/90 text-base md:text-lg leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

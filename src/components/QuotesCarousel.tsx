@@ -70,10 +70,10 @@ const QuotesCarousel = () => {
             }}
             transition={{ duration: 4, repeat: Infinity }}
           >
-            <Quote className="w-16 h-16 text-accent mx-auto mb-8 opacity-50" />
+            <Quote className="w-10 h-10 md:w-16 md:h-16 text-accent mx-auto mb-6 md:mb-8 opacity-50" />
           </motion.div>
           
-          <div className="min-h-[200px] flex flex-col items-center justify-center">
+          <div className="min-h-[160px] md:min-h-[200px] flex flex-col items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.blockquote
                 key={currentIndex}
@@ -82,7 +82,7 @@ const QuotesCarousel = () => {
                 exit={{ opacity: 0, y: -30, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
               >
-                <p className="text-2xl md:text-4xl font-serif text-primary-foreground leading-relaxed mb-8">
+                <p className="text-xl md:text-3xl lg:text-4xl font-serif text-primary-foreground leading-relaxed mb-6 md:mb-8 px-2">
                   "{quotes[currentIndex].text}"
                 </p>
                 <motion.footer 

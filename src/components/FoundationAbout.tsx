@@ -26,7 +26,7 @@ const FoundationAbout = () => {
           <span className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/10">
             Our Purpose
           </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
             About <span className="text-accent">Benson Osika Foundation</span>
           </h2>
           <motion.div
@@ -39,8 +39,8 @@ const FoundationAbout = () => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <motion.div 
-            className="bg-card p-8 md:p-12 rounded-2xl shadow-xl border border-border/50 relative overflow-hidden"
+           <motion.div 
+            className="bg-card p-5 md:p-8 lg:p-12 rounded-2xl shadow-xl border border-border/50 relative overflow-hidden"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -51,13 +51,13 @@ const FoundationAbout = () => {
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-accent/5 to-transparent rounded-tr-full" />
             
             <motion.p 
-              className="text-foreground/90 text-lg leading-relaxed mb-6 relative z-10"
+              className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <span className="text-5xl font-serif text-accent float-left mr-3 mt-1 leading-none">T</span>
+              <span className="text-4xl md:text-5xl font-serif text-accent float-left mr-2 md:mr-3 mt-1 leading-none">T</span>
               he Benson Osika Foundation was born out of a powerful vision—one deeply rooted in the 
               belief that every individual deserves an opportunity, the right support, and the tools 
               to succeed in life. We believe that the youth are our greatest hope for the future, 
@@ -66,7 +66,7 @@ const FoundationAbout = () => {
             </motion.p>
 
             <motion.p 
-              className="text-foreground/90 text-lg leading-relaxed mb-6 relative z-10"
+              className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -79,7 +79,7 @@ const FoundationAbout = () => {
             </motion.p>
 
             <motion.p 
-              className="text-foreground/90 text-lg leading-relaxed mb-6 relative z-10"
+              className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -92,7 +92,7 @@ const FoundationAbout = () => {
             </motion.p>
 
             <motion.p 
-              className="text-foreground/90 text-lg leading-relaxed font-semibold text-accent relative z-10 italic"
+              className="text-foreground/90 text-base md:text-lg leading-relaxed font-semibold text-accent relative z-10 italic"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -102,7 +102,7 @@ const FoundationAbout = () => {
             </motion.p>
 
             <motion.div 
-              className="mt-10 pt-8 border-t border-border/50 relative z-10"
+              className="mt-6 md:mt-10 pt-6 md:pt-8 border-t border-border/50 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -122,7 +122,7 @@ const FoundationAbout = () => {
                     <div className="w-12 h-12 rounded-full bg-accent/15 flex items-center justify-center mx-auto mb-3 group-hover:bg-accent/25 transition-colors">
                       <pillar.icon className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
                     </div>
-                    <h4 className="text-lg font-bold text-accent mb-1">{pillar.title}</h4>
+                    <h4 className="text-base md:text-lg font-bold text-accent mb-1">{pillar.title}</h4>
                     <p className="text-sm text-muted-foreground">{pillar.subtitle}</p>
                   </motion.div>
                 ))}

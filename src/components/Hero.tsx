@@ -7,7 +7,7 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
-      {/* Background image with parallax-like effect */}
+      {/* Background image */}
       <motion.div 
         className="absolute inset-0"
         initial={{ scale: 1.1 }}
@@ -54,22 +54,23 @@ const Hero = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         {/* Floating particles */}
-        {[...Array(5)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-accent/30 rounded-full"
+            className="absolute w-1.5 h-1.5 bg-accent/40 rounded-full"
             style={{ 
-              top: `${20 + i * 15}%`, 
-              left: `${10 + i * 20}%` 
+              top: `${15 + i * 14}%`, 
+              left: `${8 + i * 18}%` 
             }}
             animate={{
-              y: [-20, 20, -20],
-              opacity: [0.3, 0.7, 0.3],
+              y: [-30, 30, -30],
+              x: [-10, 10, -10],
+              opacity: [0.2, 0.8, 0.2],
             }}
             transition={{ 
-              duration: 4 + i, 
+              duration: 5 + i * 0.8, 
               repeat: Infinity, 
-              delay: i * 0.5 
+              delay: i * 0.4 
             }}
           />
         ))}
@@ -83,13 +84,13 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="inline-block px-6 py-2.5 bg-accent/20 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full backdrop-blur-sm border border-accent/20">
+            <span className="inline-block px-6 py-2.5 bg-accent/20 text-accent text-xs md:text-sm font-medium tracking-[0.2em] uppercase rounded-full backdrop-blur-sm border border-accent/20">
               Empowering Communities
             </span>
           </motion.div>
           
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight"
+            className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
@@ -113,7 +114,7 @@ const Hero = () => {
           />
           
           <motion.p 
-            className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed font-light"
+            className="text-base md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed font-light px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}

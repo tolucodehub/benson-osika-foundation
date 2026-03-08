@@ -17,10 +17,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-gradient-to-b from-background to-muted/20 overflow-hidden relative">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-accent/3 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+    <section id="about" className="section-padding bg-background overflow-hidden relative">
+      {/* Subtle dot pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, hsl(220 50% 20%) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
       <div className="container mx-auto relative z-10">
         <motion.div 
@@ -30,11 +29,14 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/10">
+          <motion.span 
+            className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/15"
+            whileHover={{ scale: 1.05 }}
+          >
             About The Founder
-          </span>
+          </motion.span>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-            Engr. Benson Osika, <span className="text-accent">FNSE</span>
+            Engr. Benson Osika, <span className="text-gradient-gold">FNSE</span>
           </h2>
           <motion.div
             className="w-16 h-1 bg-accent mx-auto rounded-full"
@@ -60,14 +62,18 @@ const About = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute -inset-3 bg-gradient-to-br from-accent/30 to-accent/5 rounded-2xl blur-xl opacity-50" />
+              <motion.div 
+                className="absolute -inset-3 bg-gradient-to-br from-accent/20 to-accent/5 rounded-2xl blur-xl"
+                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-2 border-accent/20 relative">
                 <img
                   src={bensonImage}
                   alt="Engr. Benson Osika, FNSE"
                   className="w-full h-full object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
               </div>
             </motion.div>
 
@@ -76,16 +82,20 @@ const About = () => {
               {highlights.map(({ icon: Icon, label }, index) => (
                 <motion.div
                   key={label}
-                  className="flex items-center gap-3 p-4 bg-card rounded-xl shadow-sm border border-border/50 hover:shadow-md hover:border-accent/30 transition-all"
+                  className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl border border-border hover:border-accent/30 hover:shadow-md transition-all"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                  whileHover={{ x: 5 }}
+                  whileHover={{ x: 5, backgroundColor: "hsla(40, 80%, 55%, 0.05)" }}
                 >
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                  <motion.div 
+                    className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
                     <Icon className="w-5 h-5 text-accent" />
-                  </div>
+                  </motion.div>
                   <span className="text-sm font-medium text-foreground">{label}</span>
                 </motion.div>
               ))}
@@ -100,12 +110,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <div className="bg-card p-5 md:p-8 lg:p-12 rounded-2xl shadow-xl border border-border/50 relative overflow-hidden">
-              {/* Decorative corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-accent/8 to-transparent rounded-bl-full" />
+            <div className="bg-background p-5 md:p-8 lg:p-12 rounded-2xl shadow-xl border border-border relative overflow-hidden">
+              {/* Decorative corners */}
+              <div className="absolute top-0 right-0 w-20 h-20 border-r-4 border-t-4 border-accent/15 rounded-tr-2xl" />
+              <div className="absolute bottom-0 left-0 w-20 h-20 border-l-4 border-b-4 border-accent/15 rounded-bl-2xl" />
               
               <motion.p 
-                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
+                className="text-foreground/85 text-base md:text-lg leading-relaxed mb-4 md:mb-6 relative z-10"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -120,7 +131,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
+                className="text-foreground/85 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -133,7 +144,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
+                className="text-foreground/85 text-base md:text-lg leading-relaxed mb-4 md:mb-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -146,7 +157,7 @@ const About = () => {
               </motion.p>
               
               <motion.p 
-                className="text-foreground/90 text-base md:text-lg leading-relaxed"
+                className="text-foreground/85 text-base md:text-lg leading-relaxed"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -158,7 +169,7 @@ const About = () => {
               </motion.p>
 
               <motion.div 
-                className="mt-8 pt-8 border-t border-border/50"
+                className="mt-8 pt-8 border-t border-border"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -168,12 +179,12 @@ const About = () => {
                   {affiliations.map((affiliation, index) => (
                     <motion.span 
                       key={affiliation}
-                      className="px-4 py-2 bg-primary/5 text-primary text-sm rounded-full border border-border/50 hover:bg-accent/10 hover:text-accent hover:border-accent/20 transition-all cursor-default"
+                      className="px-4 py-2 bg-muted text-foreground text-sm rounded-full border border-border hover:bg-accent/10 hover:text-accent hover:border-accent/20 transition-all cursor-default"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.9 + index * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileHover={{ scale: 1.08, y: -3 }}
                     >
                       {affiliation}
                     </motion.span>

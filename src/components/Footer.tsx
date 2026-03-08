@@ -9,9 +9,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer id="contact" className="bg-primary text-primary-foreground overflow-hidden relative">
-      {/* Top decorative border */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
+    <footer id="contact" className="bg-foreground text-background overflow-hidden relative">
+      {/* Top accent line */}
+      <div className="h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
+      
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           {/* About */}
@@ -24,7 +25,6 @@ const Footer = () => {
             <motion.div 
               className="flex items-center gap-3 mb-6"
               whileHover={{ x: 5 }}
-              transition={{ duration: 0.2 }}
             >
               <motion.div 
                 className="w-10 h-10 rounded-full bg-accent flex items-center justify-center"
@@ -35,7 +35,7 @@ const Footer = () => {
               </motion.div>
               <span className="font-serif text-xl font-medium">Benson Osika Foundation</span>
             </motion.div>
-            <p className="text-primary-foreground/70 leading-relaxed">
+            <p className="text-background/60 leading-relaxed">
               Committed to expanding opportunities and improving lives through education, 
               healthcare, youth empowerment, and skill acquisition.
             </p>
@@ -60,7 +60,7 @@ const Footer = () => {
                 >
                   <a 
                     href={`#${link.toLowerCase()}`} 
-                    className="text-primary-foreground/70 hover:text-accent transition-colors inline-block group"
+                    className="text-background/60 hover:text-accent transition-colors inline-block group"
                   >
                     <span className="relative">
                       {link}
@@ -81,37 +81,25 @@ const Footer = () => {
           >
             <h4 className="font-serif text-lg font-medium mb-6 text-accent">Contact</h4>
             <ul className="space-y-4">
-              <motion.li 
-                className="flex items-start gap-3"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.li className="flex items-start gap-3" whileHover={{ x: 5 }}>
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span className="text-primary-foreground/70">Port Harcourt, Rivers State, Nigeria</span>
+                <span className="text-background/60">Port Harcourt, Rivers State, Nigeria</span>
               </motion.li>
-              <motion.li 
-                className="flex items-center gap-3"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.li className="flex items-center gap-3" whileHover={{ x: 5 }}>
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="mailto:bensonosikafoundation@gmail.com" className="text-primary-foreground/70 hover:text-accent transition-colors">
+                <a href="mailto:bensonosikafoundation@gmail.com" className="text-background/60 hover:text-accent transition-colors">
                   bensonosikafoundation@gmail.com
                 </a>
               </motion.li>
-              <motion.li 
-                className="flex items-center gap-3"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.li className="flex items-center gap-3" whileHover={{ x: 5 }}>
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <span className="text-primary-foreground/70">0803 709 7747</span>
+                <span className="text-background/60">0803 709 7747</span>
               </motion.li>
             </ul>
 
             {/* Social Media */}
             <div className="mt-6">
-              <h5 className="text-sm font-medium mb-3 text-primary-foreground/80">Follow Us</h5>
+              <h5 className="text-sm font-medium mb-3 text-background/70">Follow Us</h5>
               <div className="flex items-center gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -119,7 +107,7 @@ const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:bg-accent hover:text-accent-foreground transition-colors"
+                    className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center text-background/60 hover:bg-accent hover:text-accent-foreground transition-colors"
                     aria-label={social.label}
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -138,18 +126,18 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <motion.div 
-          className="border-t border-primary-foreground/10 mt-12 pt-8"
+          className="border-t border-background/10 mt-12 pt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-primary-foreground/50 text-sm">
+            <p className="text-background/40 text-sm">
               © {new Date().getFullYear()} Benson Osika Foundation. All rights reserved.
             </p>
             <motion.p 
-              className="text-primary-foreground/50 text-sm flex items-center gap-1"
+              className="text-background/40 text-sm flex items-center gap-1"
               whileHover={{ scale: 1.05 }}
             >
               Made with 

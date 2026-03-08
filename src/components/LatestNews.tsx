@@ -5,8 +5,11 @@ import { newsItems } from "@/data/newsData";
 
 const LatestNews = () => {
   return (
-    <section id="news" className="section-padding bg-gradient-to-b from-background to-muted overflow-hidden">
-      <div className="container mx-auto">
+    <section id="news" className="section-padding bg-muted/30 overflow-hidden relative">
+      {/* Pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, hsl(220 50% 20%) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+      <div className="container mx-auto relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -14,11 +17,14 @@ const LatestNews = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-2 bg-accent/10 text-accent text-sm font-medium tracking-widest uppercase rounded-sm mb-4">
+          <motion.span 
+            className="inline-block px-5 py-2.5 bg-accent/10 text-accent text-sm font-medium tracking-[0.2em] uppercase rounded-full mb-4 border border-accent/15"
+            whileHover={{ scale: 1.05 }}
+          >
             Stay Updated
-          </span>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">
-            Latest <span className="text-accent">News</span>
+          </motion.span>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
+            Latest <span className="text-gradient-gold">News</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Follow our journey as we continue to make a difference in communities across Nigeria.
@@ -29,36 +35,33 @@ const LatestNews = () => {
           {newsItems.map((news, index) => (
             <motion.article
               key={news.id}
-              className="bg-card rounded-xl overflow-hidden shadow-lg border border-border group hover:shadow-xl transition-all duration-300"
+              className="bg-background rounded-2xl overflow-hidden shadow-lg border border-border group hover:shadow-xl transition-all duration-300"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
               whileHover={{ y: -5 }}
             >
               <Link to={`/news/${news.id}`} className="block">
-                {/* Image Container */}
                 <div className="relative h-48 md:h-64 overflow-hidden">
                   <img
                     src={news.image}
                     alt={news.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Date Badge */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <motion.div
-                    className="absolute top-4 left-4 bg-accent text-accent-foreground px-4 py-2 rounded-sm flex items-center gap-2 shadow-lg"
+                    className="absolute top-4 left-4 bg-accent text-accent-foreground px-4 py-2 rounded-full flex items-center gap-2 shadow-lg"
                     initial={{ x: -20, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.2 }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.15 }}
                   >
                     <Calendar size={16} />
                     <span className="text-sm font-semibold">{news.date}</span>
                   </motion.div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6">
                   <h3 className="text-xl font-serif font-bold text-foreground mb-4 line-clamp-2 group-hover:text-accent transition-colors">
                     {news.title}

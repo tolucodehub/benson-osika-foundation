@@ -23,7 +23,7 @@ const Header = () => {
     <motion.header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-primary/98 backdrop-blur-md shadow-lg shadow-primary/20" 
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border" 
           : "bg-primary/80 backdrop-blur-sm"
       }`}
       initial={{ y: -100 }}
@@ -37,7 +37,6 @@ const Header = () => {
             href="#home" 
             className="flex items-center gap-3"
             whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
           >
             <motion.div 
               className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shadow-md"
@@ -47,7 +46,9 @@ const Header = () => {
               <span className="text-accent-foreground font-serif font-bold text-lg">BO</span>
             </motion.div>
             <div className="hidden sm:block">
-              <span className="text-primary-foreground font-serif text-lg font-medium">
+              <span className={`font-serif text-lg font-medium transition-colors duration-300 ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}>
                 Benson Osika Foundation
               </span>
             </div>
@@ -59,7 +60,11 @@ const Header = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-primary-foreground/80 hover:text-accent transition-colors duration-300 text-sm font-medium tracking-wide uppercase relative group"
+                className={`text-sm font-medium tracking-wide uppercase relative group transition-colors duration-300 ${
+                  isScrolled 
+                    ? "text-foreground/70 hover:text-accent" 
+                    : "text-white/80 hover:text-accent"
+                }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -74,7 +79,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-primary-foreground p-2"
+            className={`md:hidden p-2 transition-colors ${isScrolled ? "text-foreground" : "text-white"}`}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.9 }}
           >
@@ -108,7 +113,7 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav 
-              className="md:hidden py-4 border-t border-primary-foreground/10"
+              className={`md:hidden py-4 border-t ${isScrolled ? "border-border" : "border-white/10"}`}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -119,7 +124,11 @@ const Header = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block py-3 text-primary-foreground/80 hover:text-accent transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
+                  className={`block py-3 text-sm font-medium tracking-wide uppercase transition-colors ${
+                    isScrolled
+                      ? "text-foreground/70 hover:text-accent"
+                      : "text-white/80 hover:text-accent"
+                  }`}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
